@@ -107,6 +107,7 @@ describe("Trello", function () {
 
       it("should have an formData.name property", function () {
         this.request.options.formData.should.have.property("name");
+        this.request.options.formData.name.should.equal("image.png");
       });
 
       // Check if a readable stream
