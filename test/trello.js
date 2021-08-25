@@ -96,13 +96,17 @@ describe("Trello", function () {
 
     describe("#post() - image stream upload", function () {
       beforeEach(function () {
-        this.trello.post("/test", { attachment: new Stream.Readable() }, function () {});
+        this.trello.post("/test", { attachment: new Stream.Readable(), name: "image.png" }, function () {});
       });
 
       behavesLike.aPostBodyRequest();
 
       it("should have an formData.file property", function () {
         this.request.options.formData.should.have.property("file");
+      });
+
+      it("should have an formData.name property", function () {
+        this.request.options.formData.should.have.property("name");
       });
 
       // Check if a readable stream
